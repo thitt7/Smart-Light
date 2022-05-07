@@ -1,0 +1,264 @@
+@import "bourbon";
+@import url(https://fonts.googleapis.com/css?family=Fredericka+the+Great|Frijole);
+
+.wall,
+.switch,
+.side,
+.front,
+.switchplate,
+.screw {
+  outline: none;
+  position: absolute;
+  backface-visibility: visible;
+  transition: margin 100ms;
+}
+
+.switch,
+.wall,
+.switchplate,
+.screw {
+  z-index: -2;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+.wall {
+  background: linear-gradient(to bottom, #a3955d 0%,#9b9371 100%);
+  height: 100%;
+  width: 100%;
+}
+
+
+.switchplate {
+  background: #e6e5e3;
+  background: linear-gradient(135deg, #e0dfde 0%,#ededed 49%,#c6c6c6 100%);
+  box-shadow: 2px 2px 6px 2px rgba(0,0,0,.1) inset, -3px -3px 8px rgba(0,0,0,.3) inset, 3px 3px 20px 3px #fff inset, 3px 3px 6px rgba(0,0,0,.2), -2px -1px 4px rgba(0,0,0,.1);
+  height: 300px;
+  left: 50%;
+  margin: -150px 0 0 -100px;
+  perspective: 200;
+  top: 50%;
+  width: 200px;
+}
+
+.screw {
+  width: 14px;
+  height: 14px;
+  box-shadow: 1px 1px 3px #fff inset, -1px -1px 3px rgba(0,0,0,.3) inset;
+  border-radius: 50%;
+  left: 50%;
+  top: 75px;
+  margin: 0 0 0 -7px;
+  text-align: center;
+  color: rgba(0,0,0,.1);
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 10px;
+  transform: rotate(-24deg);
+}
+
+.screw.bottom {
+  top: auto;
+  bottom: 75px;
+}
+
+.switch {
+  background: #e5e3e0;
+  /*border: 1px solid #b1aca7;*/
+  border-top: 0;
+  box-shadow: 1px 1px 2px 2px rgba(0,0,0,.4), -1px -6px 4px rgba(0,0,0,.2) inset;
+  height: 45px;
+  left: 50%;
+  margin: -20px 0 0 -10px;
+  top: 50%;
+  width: 20px;
+}
+
+.side {
+  appearance: none;
+  /*background: linear-gradient(to bottom, rgba(230, 229, 227, 1) 0%, rgba(134,125,116,1) 20%,rgba(180,173,168,1) 90%, #e5e3e0 100%);*/
+  border-radius: 3px;
+  cursor: pointer;
+  display: block;
+  height: 25px;
+  left: 50%;
+  margin: -25px -10px;
+  top: 50%;
+  width: 20px;
+}
+
+.onoff {
+  background: transparent;
+  color: #b7b0aa !important;
+  font: normal 11px 'Arial Narrow'!important;
+  text-align: center;
+  left: 50%;
+  margin: 4px -10px !important;
+  top: 50%;
+  position: absolute;
+  width: 20px;
+}
+
+.onoff .off {
+  display: none;
+}
+
+.side:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  box-shadow: 8px -2px 4px rgba(0,0,0,.3);
+  right: 2px;
+  transform: skew(-15deg,10deg);
+  z-index: -1;
+}
+
+.front {
+  background: #eaeae8;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px #fff inset, -1px -1px 5px rgba(0,0,0,.3) inset;
+  cursor: pointer;
+  display: block;
+  height: 20px;
+  left: 50%;
+  margin: -42px -10px;
+  top: 50%;
+  transform: rotateX(30deg);
+  width: 21px;
+  z-index: 25;
+}
+
+.side:checked {
+  background: linear-gradient(to bottom, #f7dc2c 0%,#e8811b 100%);
+  box-shadow: 0 0 6px 3px #fb492b inset,  0 0 15px 1px #fb492b;
+  margin: 0 -10px;
+  top: 50%;
+  width: 20px;
+}
+
+.side:checked ~ .onoff {
+   background: linear-gradient(to bottom, #f7dc2c 0%,#e8811b 100%);
+  box-shadow: 0 0 5px 1px #fb492b inset, 0 0 10px #fb492b;
+  color: #fa522d;
+  display: block;
+  font-size: 10px;
+  left: 50%;
+  margin: -21px -10px;
+  top: 50%;
+  border-radius: 2px;
+  padding: 7px 0 9px;
+  width: 20px;
+}
+
+.side:checked ~ .onoff .on {
+  display: none;
+}
+
+.side:checked ~ .onoff .off {
+  display: block;
+}
+
+.side:checked:after {
+  transform: skew(10deg,-15deg);
+  box-shadow: 6px 10px 4px rgba(0,0,0,.3), 4px 10px 15px 2px rgba(0,0,0,.3);
+  width: 20px;
+}
+
+.side:checked ~ .front {
+  background: linear-gradient(to bottom, #f7dc2c 0%,#e8811b 100%);
+  box-shadow: 0 0 8px 5px #fb492b inset,  0 0 15px 1px #fb492b;
+  margin: 20px -10px;
+  top: 50%;
+  transform: rotateX(-30deg);
+  width: 20px;
+}
+
+.side:checked ~ .wall {
+  background: linear-gradient(to bottom, #5e573e 0%,#544f3d 100%);
+}
+
+.side:checked ~ .switchplate {
+  background: linear-gradient(to bottom, #afafaf 0%,#b2b2b2 49%,#898989 100%);
+  box-shadow: 2px 2px 6px 2px rgba(0,0,0,.1) inset, -3px -3px 8px rgba(0,0,0,.3) inset, 3px 3px 20px 3px rgba(255, 255, 255, .5) inset, 3px 3px 6px rgba(0,0,0,.2), -2px -1px 4px rgba(0,0,0,.1);
+
+}
+
+
+<!--Christmas Lights Styling-->
+h1 {
+  color: #bfffc9;
+  text-align: center;
+  /*margin: 1em;*/
+  padding: 0;
+  font-size: 45px !important;
+  text-transform: uppercase;
+  font-family: 'Fredericka the Great', 'Frijole';
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1em;
+}
+#fc {
+  text-align:center;
+  justify-content: center;
+}
+h2 {
+  color: #bfffc9;
+  text-align: center;
+  /*margin: 1em;*/
+  display: inline;
+  padding: 0;
+  font-size: 47px !important;
+  text-transform: uppercase;
+  font-family: 'Fredericka the Great', 'Frijole';
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1em;
+}
+.lights-1 {
+  animation: twinkle 1s infinite;
+}
+.lights-2 {
+  animation: twinkle 2s infinite;
+}
+.lights-3 {
+  animation: twinkle 3s infinite;
+}
+.lights-4 {
+  animation: twinkle 4s infinite;
+}
+.lights-5 {
+  animation: twinkle 5s infinite;
+}
+.lights-6 {
+  animation: twinkle 6s infinite;
+}
+.lights-7 {
+  animation: twinkle 7s infinite;
+}
+@keyframes twinkle {
+  0%, 100% {
+    color: #ffbfcf;
+    text-shadow: 0 0 15px #ff0040, 0 0 25px #ff0040;
+  }
+  20% {
+    color: #e2bfff;
+    text-shadow: 0 0 15px #8c00ff, 0 0 25px #8c00ff;
+  }
+  40% {
+    color: #bfe9ff;
+    text-shadow: 0 0 15px #00a6ff, 0 0 25px #00a6ff;
+  }
+  60% {
+    color: #bfffc9;
+    text-shadow: 0 0 15px #00ff26, 0 0 25px #00ff26;
+  }
+  80% {
+    color: #fffbbf;
+    text-shadow: 0 0 15px #fe0, 0 0 25px #fe0;
+  }
+}
